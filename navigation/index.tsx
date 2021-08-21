@@ -15,6 +15,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import Colors from "../constants/Colors";
 import {FontAwesome5, MaterialCommunityIcons, MaterialIcons, Octicons} from "@expo/vector-icons";
 import ChatRoomScreen from "../screens/ChatRoomScreen";
+import ContactsScreen from "../screens/ContactsScreen";
 
 export default function Navigation({colorScheme}: { colorScheme: ColorSchemeName }) {
     return (
@@ -74,6 +75,7 @@ function RootNavigator() {
                 })}
 
             />
+            <Stack.Screen name="Contacts" component={ContactsScreen} options={{title: 'Contacts'}}/>
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{title: 'Oops!'}}/>
         </Stack.Navigator>
     );
