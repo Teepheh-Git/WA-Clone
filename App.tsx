@@ -57,7 +57,7 @@ function App() {
                         id: userInfo.attributes.sub,
                         name: userInfo.username,
                         imageUri: getRandomImage(),
-                        status: 'Hey, I am using whatsapp'
+                        status: 'Hey, I am using wa-Clone'
 
                     }
 
