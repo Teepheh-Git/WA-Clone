@@ -1,13 +1,41 @@
 import * as React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {Text, View} from '../components/Themed';
-import ChatListItem from "../components/chatListItem";
 
-import users from '../data/Users'
-import NewMessageButton from "../components/newMessageButton";
+// import users from '../data/Users'
 import ContactListItem from "../components/contactListItem";
+import {useEffect, useState} from "react";
+import {API, graphqlOperation} from "aws-amplify";
+import {listUsers} from "../src/graphql/queries";
 
 export default function ContactsScreen() {
+
+    const [users, setUsers] = useState([])
+
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+
+
+            try {
+
+                const usersData = await API.graphql(
+                    graphqlOperation(listUsers)
+                )
+                // console.log(usersData)
+
+                setUsers(usersData.data.listUsers.items)
+
+            } catch (e) {
+                console.log(e)
+            }
+
+
+        }
+        fetchUsers();
+    }, [])
+
+
     return (
         <View style={styles.container}>
 
@@ -18,7 +46,6 @@ export default function ContactsScreen() {
                 keyExtractor={(item) => item.id}
             />
 
-            {/*<NewMessageButton/>*/}
         </View>
     );
 }
