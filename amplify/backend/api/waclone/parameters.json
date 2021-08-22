@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "waclone",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authwaclone7aa8c1df",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
